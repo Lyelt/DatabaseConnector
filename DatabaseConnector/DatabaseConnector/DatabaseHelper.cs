@@ -55,6 +55,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static string GetString(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(string);
+
             return reader.GetString(reader.GetOrdinal(field));
         }
 
@@ -69,6 +72,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static decimal GetDecimal(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(decimal);
+
             return reader.GetDecimal(reader.GetOrdinal(field));
         }
 
@@ -83,6 +89,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static double GetDouble(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(double);
+
             return reader.GetDouble(reader.GetOrdinal(field));
         }
 
@@ -97,6 +106,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static float GetFloat(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(float);
+
             return reader.GetFloat(reader.GetOrdinal(field));
         }
 
@@ -111,6 +123,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static int GetInt(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(int);
+
             return reader.GetInt32(reader.GetOrdinal(field));
         }
 
@@ -125,6 +140,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static DateTime GetDateTime(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(DateTime);
+
             return reader.GetDateTime(reader.GetOrdinal(field));
         }
 
@@ -138,6 +156,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static object GetObject(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(object);
+
             return reader.GetValue(reader.GetOrdinal(field));
         }
 
@@ -153,6 +174,9 @@ namespace LyeltDatabaseConnector
         /// <exception cref="System.Data.SqlTypes.SqlNullValueException">The field was null</exception>
         public static T GetField<T>(this SqlDataReader reader, string field)
         {
+            if (reader.IsDBNull(reader.GetOrdinal(field)))
+                return default(T);
+
             return reader.GetFieldValue<T>(reader.GetOrdinal(field));
         }
     }
