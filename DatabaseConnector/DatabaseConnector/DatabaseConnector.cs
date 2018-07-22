@@ -95,7 +95,7 @@ namespace LyeltDatabaseConnector
                 throw new ArgumentException("Sql command arguments must have a matching name/value pair.", nameof(args));
 
             if (argsList
-                .Where((x, i) => i % 2 != 0)    // All odd parameters are the names
+                .Where((x, i) => i % 2 == 0)    // All even parameters are the names
                 .Any(a => string.IsNullOrWhiteSpace(a.ToString())))
                 throw new ArgumentNullException(nameof(args), "Sql command argument name(s) cannot be null or empty.");
         }
